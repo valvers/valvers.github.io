@@ -76,6 +76,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://www.valvers.com/engineering/an-and-jic-fittings/</loc>
+     <lastmod>2020-02-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://www.valvers.com/engineering/bolt-dimensions/</loc>
      <lastmod>2020-02-18</lastmod>
      <changefreq>daily</changefreq>
@@ -102,6 +107,11 @@
     </url>
     <url>
      <loc>https://www.valvers.com/open-software/gcc-weak-function-attributes/</loc>
+     <lastmod>2020-02-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://www.valvers.com/open-software/logging-with-gcc/</loc>
      <lastmod>2020-02-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
