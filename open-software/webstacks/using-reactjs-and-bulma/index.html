@@ -985,6 +985,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#creating-a-new-component" class="md-nav__link">
+    Creating a New Component
+  </a>
+  
+</li>
+      
       
       
       
@@ -3041,6 +3048,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#creating-a-new-component" class="md-nav__link">
+    Creating a New Component
+  </a>
+  
+</li>
+      
       
       
       
@@ -3063,7 +3077,7 @@
                 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
                   <li class="last-updated-holder displayDate loading">
                     <span class="last-updated-text">Last updated:</span>
-                    <time role="presentation" datetime="2018-10-25T00:00:00.000Z" data-article-date-source="ms.date">2020-03-30</time>
+                    <time role="presentation" datetime="2018-10-25T00:00:00.000Z" data-article-date-source="ms.date">2020-04-03</time>
                   </li>
                 <!--
                   <li class="readingTime">
@@ -3164,6 +3178,92 @@ add the following line to change the primary colour used by Bulma SASS:</p>
 turned orange. All components basing themselves off of the primary colour will be
 affected throughout the CSS stack.</p>
 <p><img alt="" src="/img/webstacks/reactjs/getting-started-reactjs-sass-orange.png" /></p>
+<h2 id="creating-a-new-component">Creating a New Component<a class="headerlink" href="#creating-a-new-component" title="Permanent link">&para;</a></h2>
+<p>In order to do something useful we want to create what's known as a component in
+ReactJS. Let's take the SVG logo and make it a component. Then we can look at doing
+something funky with it.</p>
+<p>Checkout git commit <code>8535c88</code> for this part of the tutorial.</p>
+<p>We add a new <code>components</code> directory to the source code so we have somewhere to
+dump our component source code. In a new file we create a new component called
+<code>Logo</code>.</p>
+<p>The following content is in <code>src/components/logo.js</code>. I'm sure you could do
+Typescript here too.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">logo</span> <span class="nx">from</span> <span class="s1">&#39;../logo.svg&#39;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="nx">Logo</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">transform</span><span class="o">:</span> <span class="s1">&#39;scale(1)&#39;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">handleMouseEnter</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleMouseEnter</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">handleMouseLeave</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleMouseLeave</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">handleMouseEnter</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">((</span><span class="nx">state</span><span class="p">,</span> <span class="nx">props</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">({</span>
+            <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">transform</span><span class="o">:</span> <span class="s1">&#39;scale(1.5)&#39;</span>
+            <span class="p">}</span>
+        <span class="p">}))</span>
+    <span class="p">}</span>
+
+    <span class="nx">handleMouseLeave</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">((</span><span class="nx">state</span><span class="p">,</span> <span class="nx">props</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">({</span>
+            <span class="nx">style</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">transform</span><span class="o">:</span> <span class="s1">&#39;scale(1)&#39;</span>
+            <span class="p">}</span>
+        <span class="p">}))</span>
+    <span class="p">}</span>
+
+    <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="p">{</span><span class="nx">logo</span><span class="p">}</span>
+                <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;App-logo&quot;</span>
+                <span class="nx">style</span> <span class="o">=</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">style</span> <span class="p">}</span>
+                <span class="nx">alt</span><span class="o">=</span><span class="s2">&quot;logo&quot;</span>
+                <span class="nx">onMouseLeave</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleMouseLeave</span><span class="p">}</span>
+                <span class="nx">onMouseEnter</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleMouseEnter</span><span class="p">}</span> <span class="o">/&gt;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>This component imports <code>React</code> - so we can extend the <code>React.Component</code> class
+to create our component.</p>
+<p>It imports the Logo image as an SVG in exactly the same way as the original test
+React application does.</p>
+<p>Then, creates a new class by extending the <code>React.Component</code> base class - here
+we create a class constructor that first constructs the base class object
+(super) with the properties that have been passed in.</p>
+<p>After that we create a state object bound the class. This state object <em>must</em>
+only be altered through the react framework's <code>setState</code> function. This is so that
+rendering changes, which are required to happen on the server-side are does as
+efficiently as possible. If the render function makes use of state then the class
+knows that it needs to re-render itself and update the component's view.</p>
+<p>We have added in some event handling for this component. This nicely wraps up a
+HTML view object and it's related JavaScript support.</p>
+<p>All the callbacks do are change the scale of the SVG image when the mouse hovers.
+We could of course do this much more simply in pure CSS, but we're here to
+investigate how Bulma and React work and how they can work together. I'm very
+much learning as I go.</p>
+<p>The <code>render</code> function of the class returns the view. It makes use of the
+component's state. Using the state doesn't need to be wrapped in a get function,
+but setting the state <em>must</em> as we've already established be wrapped with the
+<code>setState</code> function.</p>
+<p>We can investigate that further later on. We simply return a single image element.
+Normally we'd wrap the contents returned in a container div. I just wanted the
+minimum possible here for now. From the render method, we <em>must</em> only have one
+outer element. Thus, if we want to return an image and a paragraph, that's fine -
+but both must be wrapped in a div or similar element as a container.</p>
+<p>If you're familiar with JavaScript then you'll be familiar with the <code>bind(this)</code>
+construct that's going on here. It's a little laborious, but it must be done for
+the event handlers to be bound to the class object and therefore be able to make
+use of <code>this</code> to reference the class object. Without these bind calls, the event
+handlers would have no knowledge of the class in which they're defined.</p>
                 
                   
                 
