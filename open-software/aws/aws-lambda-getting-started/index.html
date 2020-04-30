@@ -3069,7 +3069,7 @@
                 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
                   <li class="last-updated-holder displayDate loading">
                     <span class="last-updated-text">Last updated:</span>
-                    <time role="presentation" datetime="2018-10-25T00:00:00.000Z" data-article-date-source="ms.date">2020-04-29</time>
+                    <time role="presentation" datetime="2018-10-25T00:00:00.000Z" data-article-date-source="ms.date">2020-04-30</time>
                   </li>
                 <!--
                   <li class="readingTime">
@@ -3090,12 +3090,12 @@
 <p>A Lambda function is essentially a snippet of code that is run because of some condition that we configure. It is not associated with a particular server. Instead, as we'll see, we select a runtime environment that is provided on some compute capacity that AWS has that can run the snippet when the conditions are correct.</p>
 <p>Conditions could be a queue entering a message queue, or a certain time is reached (a bit like cron), etc.</p>
 <p>Sign into AWS and select the Lambda server (Using the Find Services search function)</p>
-<p><img alt="" src="/images/open-software/aws/arm-lambda-getting-started/100-lambda-frontscreen.png" /></p>
+<p><img alt="" src="/img/open-software/aws/arm-lambda-getting-started/100-lambda-frontscreen.png" /></p>
 <p>Click <strong>Create Function</strong></p>
 <p>Select <code>Author from scratch</code> if it isn't already selected and fill in the Function name with something that makes sense, something like <code>awsLambdaTutorial</code>.</p>
 <p>Leave the runtime set to the latest Node.js (It's 12.x as of writing this tutorial)</p>
 <p>There's no need to do anything much with the execution role. If you expand the options you'll see that the default action is to create a new role with basic Lambda permissions. This is ideal as we don't want the Lambda to have permissions to do anything inside our account right now.</p>
-<p><img alt="" src="/images/open-software/aws/arm-lambda-getting-started/110-lambda-create.png" /></p>
+<p><img alt="" src="/img/open-software/aws/arm-lambda-getting-started/110-lambda-create.png" /></p>
 <p>Click <strong>Create Function</strong> to now go ahead and create the Lambda function.</p>
 <p>Don't be put off by the next screen, there's quite a lot on there. What we have now is an <code>index.js</code> that is filled with an example Lambda function:</p>
 <div class="codehilite"><pre><span></span><code><span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span> <span class="o">=</span> <span class="nx">async</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
@@ -3115,21 +3115,21 @@
 <h2 id="create-an-api-gateway">Create an API Gateway<a class="headerlink" href="#create-an-api-gateway" title="Permanent link">&para;</a></h2>
 <p>We can go ahead and create an API Gateway and attach an API endpoint to the Lambda in order to trigger it.</p>
 <p>Switch to the API Gateway Service in the AWS Console and select HTTP API by clicking <code>Build</code> on the HTTP API dialog:</p>
-<p><img alt="" src="/images/open-software/aws/arm-lambda-getting-started/120-api-gateway-http.png" /></p>
+<p><img alt="" src="/img/open-software/aws/arm-lambda-getting-started/120-api-gateway-http.png" /></p>
 <p>Click <code>Add Integration</code> and select <code>Lambda</code> from the dropdown list to start integrating the API to the Lambda function.</p>
-<p><img alt="" src="/images/open-software/aws/arm-lambda-getting-started/130-api-gateway-add-lambda.png" /></p>
+<p><img alt="" src="/img/open-software/aws/arm-lambda-getting-started/130-api-gateway-add-lambda.png" /></p>
 <p>Leave the Integration Target as the default - it should match the Lambda Function you created at the start. Select the <code>awsLambdaTutorial</code> Lambda as the target.</p>
-<p><img alt="" src="/images/open-software/aws/arm-lambda-getting-started/140-api-gateway-add-lambda-awslambdatutorial.png" /></p>
+<p><img alt="" src="/img/open-software/aws/arm-lambda-getting-started/140-api-gateway-add-lambda-awslambdatutorial.png" /></p>
 <p>Give the API a name like <code>awsLambdaTutorial</code> and <strong>click Next</strong>:</p>
-<p><img alt="" src="/images/open-software/aws/arm-lambda-getting-started/150-api-gateway-add-lambda-name.png" /></p>
+<p><img alt="" src="/img/open-software/aws/arm-lambda-getting-started/150-api-gateway-add-lambda-name.png" /></p>
 <p>On the next page we can see that the roue <code>/awsLambdaTutorial</code> in the HTTP API will result in use running the target lambda. The Method by default is set to <code>ANY</code>. Might as well leave all of this as default - although we'll only be using the <code>GET</code> for the turorial.</p>
-<p><img alt="" src="/images/open-software/aws/arm-lambda-getting-started/160-api-gateway-add-lambda-routes.png" /></p>
+<p><img alt="" src="/img/open-software/aws/arm-lambda-getting-started/160-api-gateway-add-lambda-routes.png" /></p>
 <p>The Stages section can just be left as <code>$default</code> - we won't be doing any fancy API versioning for this tutorial. <strong>Click Next</strong>.</p>
-<p><img alt="" src="/images/open-software/aws/arm-lambda-getting-started/170-api-gateway-add-lambda-stages.png" /></p>
+<p><img alt="" src="/img/open-software/aws/arm-lambda-getting-started/170-api-gateway-add-lambda-stages.png" /></p>
 <p>In the review page, <strong>click Create</strong> to create the API Gateway.</p>
-<p><img alt="" src="/images/open-software/aws/arm-lambda-getting-started/180-api-gateway-add-lambda-review.png" /></p>
+<p><img alt="" src="/img/open-software/aws/arm-lambda-getting-started/180-api-gateway-add-lambda-review.png" /></p>
 <p>The next page gives us information about the API Gateway - it's live already and had a unique API Gateway URL which can be used straight away.</p>
-<p><img alt="" src="/images/open-software/aws/arm-lambda-getting-started/190-api-gateway-add-lambda-create.png" /></p>
+<p><img alt="" src="/img/open-software/aws/arm-lambda-getting-started/190-api-gateway-add-lambda-create.png" /></p>
 <p>Using the route from earlier in the process and the API URL shown after creation we can exercise the Lambda function using a HTTP call to the API e
 endpoint we connected to the Lambda:</p>
 <div class="codehilite"><pre><span></span><code>$ curl -v https://kts40o1gil.execute-api.eu-west-2.amazonaws.com/awsLambdaTutorial
