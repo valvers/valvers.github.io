@@ -3293,6 +3293,7 @@ available to us from within Arduino. From the <a href="https://www.arduino.cc/re
 we can see the functions available for the Serial module.</p>
 <p>Our new code looks pretty straight forward:</p>
 <p><strong>110-esp-arduino-debug-output.ino</strong></p>
+<p><a href="https://github.com/valvers/valvers.website.src/tree/master/docs/src/esp32-mqtt-tutorial/110-esp-arduino-debug-output">110-esp-arduino-debug-output.ino</a></p>
 <div class="codehilite"><pre><span></span><code><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
   <span class="c1">// put your setup code here, to run once:</span>
     <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
@@ -3324,6 +3325,7 @@ this Arduino library can be found on GitHub: <a href="https://github.com/espress
 as a reference sketch. However, we don't need a root CA in place for the moment as we've not created our own certificate
 authority or have any CA we need to trust.</p>
 <p><strong>120-esp-arduino-wifi-connection.ino</strong></p>
+<p><a href="https://github.com/valvers/valvers.website.src/tree/master/docs/src/esp32-mqtt-tutorial/120-esp-arduino-wifi-connection">120-esp-arduino-wifi-connection.ino</a>
 <div class="codehilite"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;WiFiClientSecure.h&gt;</span><span class="cp"></span>
 
 <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">ssid</span> <span class="o">=</span> <span class="s">&quot;your-ssid&quot;</span><span class="p">;</span>
@@ -3353,8 +3355,7 @@ authority or have any CA we need to trust.</p>
     <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;:&quot;</span><span class="p">);</span>
     <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <p>Go ahead and run that sketch, remembering to change the <code>ssid</code> and <code>wifipassword</code> variables to suitable settings for
 your network.</p>
 <p>When you run the sketch, you will see output in the Serial Monitor similar to the following:</p>
@@ -3373,6 +3374,7 @@ we don't need to do anything else really, we just need to get on with looking at
 <p>Using a complete copy of a <a href="https://github.com/256dpi/arduino-mqtt/blob/master/examples/ESP32DevelopmentBoardSecure/ESP32DevelopmentBoardSecure.ino">sketch from the MQTT library</a>
 means that we can get connected to an MQTT client that is provided as a test ground.</p>
 <p><strong>130-esp-arduino-mqtt-example-shiftr.io.ino</strong></p>
+<p><a href="https://github.com/valvers/valvers.website.src/tree/master/docs/src/esp32-mqtt-tutorial/130-esp-arduino-mqtt-example-shiftr.io.ino">130-esp-arduino-mqtt-example-shiftr.io.ino</a></p>
 <div class="codehilite"><pre><span></span><code><span class="c1">// This example uses an ESP32 Development Board</span>
 <span class="c1">// to connect to shiftr.io.</span>
 <span class="c1">//</span>
@@ -3623,7 +3625,8 @@ subscribe to and publish messages to the same topic.</p>
 <p>As things in the Sketch get more complicated, we want to make sure we see output from any libraries we're using.
 Make sure to set the Core Debug Level setting to Warning or more verbosity so you can debug issues more easily:</p>
 <p><img alt="" src="/img/open-software/arduino/esp32-mqtt-tutorial/340-esp32-arduino-set-debug-logging-to-warning.png" /></p>
-<p><a href="/src/140-esp32-arduino-mqtt-connect-to-aws-iot.ino">140-esp32-arduino-mqtt-connect-to-aws-iot.ino</a> is a new
+<p><strong>140-esp32-arduino-mqtt-connect-to-aws-iot.ino</strong></p>
+<p><a href="https://github.com/valvers/valvers.website.src/tree/master/docs/src/esp32-mqtt-tutorial/140-esp32-arduino-mqtt-connect-to-aws-iot">140-esp32-arduino-mqtt-connect-to-aws-iot.ino</a> is a new
 sketch that includes the AWS configuration data that we've collected while setting up our AWS IoT service.</p>
 <p>In order to use the sketch, you'll need to fill in your AWS IoT ATS endpoint and the Thing Certificate and Private Key that you gathered earlier. If you've used all the same values as me you can leave the rest alone, otherwise you'll have to adjust the topic and/or device name.</p>
 <div class="codehilite"><pre><span></span><code>Setting AWS Root CA
