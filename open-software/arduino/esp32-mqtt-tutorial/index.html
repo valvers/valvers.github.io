@@ -3258,9 +3258,10 @@ in order to compile the sketch and upload the sketch to the ESP32 device.</p>
 <p>You should get a success message along the lines of <code>"Done uploading"</code> in the Arduino IDE.</p>
 <p><img alt="" src="/img/open-software/arduino/esp32-mqtt-tutorial/150-esp32-arduino-ide-done-uploading.png" /></p>
 <h2 id="debug-output">Debug Output<a class="headerlink" href="#debug-output" title="Permanent link">&para;</a></h2>
-<blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>If you're already familiar with Arduino and the IDE, etc. then you can safely skip this section.</p>
-</blockquote>
+</div>
 <p>To get started with the ESP (If you're not familiar with Sketches and Libraries) let's look at getting some
 debug output from the Sketch (Program) to prove to ourselves that the device is working and running our sketch.</p>
 <p>The default sketch looks like this:</p>
@@ -3441,17 +3442,21 @@ means that we can get connected to an MQTT client that is provided as a test gro
 <span class="p">}</span>
 </code></pre></div>
 
-<blockquote>
-<p><strong>NOTE:</strong> I created a <a href="https://github.com/256dpi/arduino-mqtt/issues/197">GitHub issue</a> for the fact that the example ESP32 code didn't work out-of-the box on an ESP32 development board</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>I created a <a href="https://github.com/256dpi/arduino-mqtt/issues/197">GitHub issue</a> for
+the fact that the example ESP32 code didn't work out-of-the box on an ESP32
+development board</p>
+</div>
 <p>The above code is changed slightly from the actual example code. The buffer size for the MQTT client <em>must</em>
 be increased to get past the first message received from the shiftr.io MQTT server. After that first message,
 we receive the correct <code>/hello world</code> topic and message from the server which we subscribe to. For more
 information about MQTT, you can see the <a href="http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html">MQTT 3.1.1 documentation</a>.</p>
 <h2 id="amazon-iot">Amazon IoT<a class="headerlink" href="#amazon-iot" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p><strong>NOTE:</strong> In this section, we'll make heavy use of the <a href="https://docs.aws.amazon.com/iot/latest/developerguide/iot-gs.html">AWS documentation</a></p>
-</blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In this section, we'll make heavy use of the <a href="https://docs.aws.amazon.com/iot/latest/developerguide/iot-gs.html">AWS documentation</a></p>
+</div>
 <p>The AWS IoT service allows us to create secure MQTT endpoints for our own Internet-of-Things devices. Let's
 have a look at how to get our now-MQTT-enabled ESP32 connecting to our own AWS IoT service.</p>
 <p><img alt="" src="/img/open-software/arduino/esp32-mqtt-tutorial/200-esp32-aws-iot-getting-started.png" /></p>
@@ -3565,9 +3570,10 @@ to find the URL and port number that MQTT should connect to for our new thing, w
 command. This command is run against your AWS account by using the AWS CLI tool and an AWS Access Key (With
 sufficient permissions to <code>describe-endpoint</code>)</p>
 <h4 id="create-iam-access-key">Create IAM Access Key<a class="headerlink" href="#create-iam-access-key" title="Permanent link">&para;</a></h4>
-<blockquote>
-<p><strong>NOTE</strong>: You can skip this section if you've already got an AWS Access Key and the AWS CLI tools.</p>
-</blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can skip this section if you've already got an AWS Access Key and the AWS CLI tools.</p>
+</div>
 <p>We need to create an Access Key which will allow an IAM user to perform programatic tasks on our AWS account. If
 you're still using the root account credentials to do things - STOP! Change to make yourself an IAM administrator
 role and don't bother logging in as the root account any longer.</p>
