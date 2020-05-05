@@ -1,14 +1,13 @@
 
 
 
-
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="google-site-verification" content="gdf4XzjnbaArINbai3d8P0x_W3ugnDeIUyhMuq-wHPs" />
       
       
         <link rel="canonical" href="https://www.valvers.com/open-software/raspberry-pi/step05-bare-metal-programming-in-cpt5/">
@@ -16,28 +15,8 @@
       
         <meta name="author" content="Brian Sidebotham">
       
-      
-        <meta name="lang:clipboard.copy" content="Copy to clipboard">
-      
-        <meta name="lang:clipboard.copied" content="Copied to clipboard">
-      
-        <meta name="lang:search.language" content="en">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="No matching documents">
-      
-        <meta name="lang:search.result.one" content="1 matching document">
-      
-        <meta name="lang:search.result.other" content="# matching documents">
-      
-        <meta name="lang:search.tokenizer" content="[\s\-]+">
-      
       <link rel="shortcut icon" href="../../../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
-      <meta name="google-site-verification" content="gdf4XzjnbaArINbai3d8P0x_W3ugnDeIUyhMuq-wHPs" />
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.5">
     
     
       
@@ -45,9 +24,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.df84b5fe.min.css">
       
-        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.8435c73a.min.css">
       
       
         
@@ -56,16 +35,13 @@
       
     
     
-      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
-    
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
     
     
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -75,101 +51,81 @@
     
       
         
-<script>
-  window.ga = window.ga || function() {
-    (ga.q = ga.q || []).push(arguments)
-  }
-  ga.l = +new Date
-  /* Setup integration and send page view */
-  ga("create", "UA-57476377-1", "valvers.com")
-  ga("set", "anonymizeIp", true)
-  ga("send", "pageview")
-  /* Register handler to log search on blur */
-  document.addEventListener("DOMContentLoaded", () => {
-    if (document.forms.search) {
-      var query = document.forms.search.query
-      query.addEventListener("blur", function() {
-        if (this.value) {
-          var path = document.location.pathname;
-          ga("send", "pageview", path + "?q=" + this.value)
-        }
-      })
-    }
-  })
-</script>
+<link rel="preconnect dns-prefetch" href="https://www.google-analytics.com">
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-57476377-1","valvers.com"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview")})</script>
 <script async src="https://www.google-analytics.com/analytics.js"></script>
       
     
     
   </head>
   
+  
     
     
     <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
   
-    <svg class="md-svg">
-      <defs>
-        
-        
-          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
-        
-      </defs>
-    </svg>
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#part-5-graphics-basic" tabindex="0" class="md-skip">
-        Skip to content
-      </a>
-    
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#part-5-graphics-basic" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://www.valvers.com" title="valvers.com" aria-label="valvers.com" class="md-header-nav__button md-logo">
-          
-            <img alt="logo" src="https://avatars3.githubusercontent.com/u/5575236?v=4?size=32" width="24" height="24">
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              valvers.com
-            </span>
-            <span class="md-header-nav__topic">
-              
-                Part 5 - Graphics (Basic)
-              
-            </span>
-          
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://www.valvers.com" title="valvers.com" class="md-header-nav__button md-logo" aria-label="valvers.com">
+      
+  <img src="https://avatars3.githubusercontent.com/u/5575236?v=4?size=32" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            valvers.com
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Part 5 - Graphics (Basic)
+            
+          </span>
         </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Type to start searching
+            Initializing search
           </div>
           <ol class="md-search-result__list"></ol>
         </div>
@@ -177,145 +133,55 @@
     </div>
   </div>
 </div>
+    
+    
+      <div class="md-header-nav__source">
         
-      </div>
-      
-        <div class="md-flex__cell md-flex__cell--shrink">
-          <div class="md-header-nav__source">
-            
-
-
-  
-
-<a href="https://github.com/valvers/valvers.website.src/" title="Go to repository" class="md-source" data-md-source="github">
-  
-    <div class="md-source__icon">
-      <svg viewBox="0 0 24 24" width="24" height="24">
-        <use xlink:href="#__github" width="24" height="24"></use>
-      </svg>
-    </div>
-  
+<a href="https://github.com/valvers/valvers.website.src/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
   <div class="md-source__repository">
     GitHub
   </div>
 </a>
-          </div>
-        </div>
-      
-    </div>
+      </div>
+    
   </nav>
 </header>
     
-    <div class="md-container">
+    <div class="md-container" data-md-component="container">
       
         
       
       
         
-
-  
-
-<nav class="md-tabs md-tabs--active" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
       
-        
-  <li class="md-tabs__item">
-    
-      <a href="../../.." class="md-tabs__link">
-        Home
-      </a>
-    
-  </li>
-
-      
-        
-  
-  
-    <li class="md-tabs__item">
-      
-        <a href="../../../denford-orac/" class="md-tabs__link">
-          Denford orac
-        </a>
-      
-    </li>
-  
-
-      
-        
-  
-  
-    <li class="md-tabs__item">
-      
-        <a href="../../../engineering/" class="md-tabs__link">
-          Engineering
-        </a>
-      
-    </li>
-  
-
-      
-        
-  
-  
-    <li class="md-tabs__item">
-      
-        <a href="../../" class="md-tabs__link md-tabs__link--active">
-          Open software
-        </a>
-      
-    </li>
-  
-
-      
-        
-  
-  
-    <li class="md-tabs__item">
-      
-        <a href="../../../v6manta/" class="md-tabs__link">
-          V6manta
-        </a>
-      
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
-      
-      <main class="md-main" role="main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
           
             
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://www.valvers.com" title="valvers.com" class="md-nav__button md-logo">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://www.valvers.com" title="valvers.com" class="md-nav__button md-logo" aria-label="valvers.com">
       
-        <img alt="logo" src="https://avatars3.githubusercontent.com/u/5575236?v=4?size=32" width="48" height="48">
-      
+  <img src="https://avatars3.githubusercontent.com/u/5575236?v=4?size=32" alt="logo">
+
     </a>
     valvers.com
   </label>
   
     <div class="md-nav__source">
       
-
-
-  
-
-<a href="https://github.com/valvers/valvers.website.src/" title="Go to repository" class="md-source" data-md-source="github">
-  
-    <div class="md-source__icon">
-      <svg viewBox="0 0 24 24" width="24" height="24">
-        <use xlink:href="#__github" width="24" height="24"></use>
-      </svg>
-    </div>
-  
+<a href="https://github.com/valvers/valvers.website.src/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
   <div class="md-source__repository">
     GitHub
   </div>
@@ -343,13 +209,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       Denford orac
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Denford orac" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Denford orac
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -523,13 +395,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       Engineering
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Engineering" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Engineering
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -609,13 +487,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
     <label class="md-nav__link" for="nav-4">
       Open software
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Open software" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Open software
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -688,13 +572,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6">
     
     <label class="md-nav__link" for="nav-4-6">
       Arduino
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Arduino" data-md-level="2">
       <label class="md-nav__title" for="nav-4-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Arduino
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -724,13 +614,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-7" type="checkbox" id="nav-4-7">
     
     <label class="md-nav__link" for="nav-4-7">
       Aws
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Aws" data-md-level="2">
       <label class="md-nav__title" for="nav-4-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Aws
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -760,13 +656,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8">
     
     <label class="md-nav__link" for="nav-4-8">
       Gcc
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Gcc" data-md-level="2">
       <label class="md-nav__title" for="nav-4-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Gcc
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -796,13 +698,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-9" type="checkbox" id="nav-4-9">
     
     <label class="md-nav__link" for="nav-4-9">
       Python
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Python" data-md-level="2">
       <label class="md-nav__title" for="nav-4-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Python
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -834,13 +742,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-10" type="checkbox" id="nav-4-10" checked>
     
     <label class="md-nav__link" for="nav-4-10">
       Raspberry pi
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Raspberry pi" data-md-level="2">
       <label class="md-nav__title" for="nav-4-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Raspberry pi
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -915,13 +829,16 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         Part 5 - Graphics (Basic)
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
       </label>
     
     <a href="./" title="Part 5 - Graphics (Basic)" class="md-nav__link md-nav__link--active">
@@ -929,13 +846,18 @@
     </a>
     
       
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -964,7 +886,7 @@
     Getting a UART Text Console
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Getting a UART Text Console">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -998,7 +920,7 @@
     Mailboxes
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Mailboxes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1018,7 +940,7 @@
     The Framebuffer Properties
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="The Framebuffer Properties">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1033,7 +955,7 @@
     armc-015
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="armc-015">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1081,10 +1003,6 @@
   
 </li>
       
-      
-      
-      
-      
     </ul>
   
 </nav>
@@ -1104,13 +1022,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-11" type="checkbox" id="nav-4-11">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-11" type="checkbox" id="nav-4-11">
     
     <label class="md-nav__link" for="nav-4-11">
       Saltstack
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Saltstack" data-md-level="2">
       <label class="md-nav__title" for="nav-4-11">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Saltstack
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1140,13 +1064,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-12" type="checkbox" id="nav-4-12">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-12" type="checkbox" id="nav-4-12">
     
     <label class="md-nav__link" for="nav-4-12">
       Webstacks
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Webstacks" data-md-level="2">
       <label class="md-nav__title" for="nav-4-12">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         Webstacks
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1181,13 +1111,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       V6manta
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="V6manta" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         V6manta
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1212,13 +1148,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
     
     <label class="md-nav__link" for="nav-5-2">
       2003
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="2003" data-md-level="2">
       <label class="md-nav__title" for="nav-5-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         2003
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1380,13 +1322,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
     
     <label class="md-nav__link" for="nav-5-3">
       2004
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="2004" data-md-level="2">
       <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         2004
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1728,13 +1676,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
     
     <label class="md-nav__link" for="nav-5-4">
       2005
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="2005" data-md-level="2">
       <label class="md-nav__title" for="nav-5-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         2005
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1896,13 +1850,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5">
     
     <label class="md-nav__link" for="nav-5-5">
       2007
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="2007" data-md-level="2">
       <label class="md-nav__title" for="nav-5-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         2007
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1992,13 +1952,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6">
     
     <label class="md-nav__link" for="nav-5-6">
       2008
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="2008" data-md-level="2">
       <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         2008
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2106,7 +2072,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../v6manta/2008/2008-04-12-shimmed-up-the-diff,-and-fitted-the-clocks/" title="2008 04 12 shimmed up the diff, and fitted the clocks" class="md-nav__link">
+    <a href="../../../v6manta/2008/2008-04-12-shimmed-up-the-diff%2C-and-fitted-the-clocks/" title="2008 04 12 shimmed up the diff, and fitted the clocks" class="md-nav__link">
       2008 04 12 shimmed up the diff, and fitted the clocks
     </a>
   </li>
@@ -2220,13 +2186,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-7" type="checkbox" id="nav-5-7">
     
     <label class="md-nav__link" for="nav-5-7">
       2009
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="2009" data-md-level="2">
       <label class="md-nav__title" for="nav-5-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         2009
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2280,13 +2252,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-8" type="checkbox" id="nav-5-8">
     
     <label class="md-nav__link" for="nav-5-8">
       2010
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="2010" data-md-level="2">
       <label class="md-nav__title" for="nav-5-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         2010
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2700,13 +2678,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-9" type="checkbox" id="nav-5-9">
     
     <label class="md-nav__link" for="nav-5-9">
       2011
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="2011" data-md-level="2">
       <label class="md-nav__title" for="nav-5-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         2011
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -2880,13 +2864,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10">
     
     <label class="md-nav__link" for="nav-5-10">
       2012
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="2012" data-md-level="2">
       <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         2012
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3096,13 +3086,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-11" type="checkbox" id="nav-5-11">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-11" type="checkbox" id="nav-5-11">
     
     <label class="md-nav__link" for="nav-5-11">
       2013
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="2013" data-md-level="2">
       <label class="md-nav__title" for="nav-5-11">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
         2013
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -3153,13 +3149,18 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -3188,7 +3189,7 @@
     Getting a UART Text Console
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Getting a UART Text Console">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3222,7 +3223,7 @@
     Mailboxes
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Mailboxes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3242,7 +3243,7 @@
     The Framebuffer Properties
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="The Framebuffer Properties">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3257,7 +3258,7 @@
     armc-015
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="armc-015">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3305,10 +3306,6 @@
   
 </li>
       
-      
-      
-      
-      
     </ul>
   
 </nav>
@@ -3318,27 +3315,17 @@
             
           
           <div class="md-content">
-            <article class="md-content__inner md-typeset" id="content">
+            <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/valvers/valvers.website.src/edit/master/docs/open-software/raspberry-pi/step05-bare-metal-programming-in-cpt5.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/valvers/valvers.website.src/edit/master/docs/open-software/raspberry-pi/step05-bare-metal-programming-in-cpt5.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
                 
                 
-                <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
-                  <li class="last-updated-holder displayDate loading">
-                    <span class="last-updated-text">Last updated:</span>
-                    <time role="presentation" datetime="2018-10-25T00:00:00.000Z" data-article-date-source="ms.date">2020-02-18</time>
-                  </li>
-                <!--
-                  <li class="readingTime">
-                    2 minutes to read
-                  </li>
-                -->
-                  <li class="contributors-holder">
-                    <span class="contributors-text">Contributors</span>
-                    <ul class="contributors" data-bi-name="contributors"><li><a href="https://github.com/BrianSidebotham" title="Brian Sidebotham" data-bi-name="contributorprofile"><img src="../img/contributor.svg" data-src="https://avatars3.githubusercontent.com/u/5575236?v=4?size=32" alt="Brian Sidebotham"></a></li></ul>
-                  </li>
-                </ul>
+                  
+                
+                
                 <h1 id="part-5-graphics-basic">Part 5 - Graphics (Basic)<a class="headerlink" href="#part-5-graphics-basic" title="Permanent link">&para;</a></h1>
 <p>Finally, we get on to a tutorial that moves us away from blinking an LED as we explore the VideoCore IV GPU</p>
 <h2 id="reference-material">Reference Material<a class="headerlink" href="#reference-material" title="Permanent link">&para;</a></h2>
@@ -3355,7 +3342,7 @@
 <h2 id="the-gpu-videocore-iv">The GPU (Videocore IV)<a class="headerlink" href="#the-gpu-videocore-iv" title="Permanent link">&para;</a></h2>
 <p>The GPU and ARM devices can communicate with each other through a mailbox system. However, don't forget that the ARM and GPU also share the memory space, and so although we have to communicate through the mailbox, this is what negotiates settings and a framebuffer. The framebuffer address in memory is then returned from the GPU and we can go ahead and write to the framebuffer to see graphics.</p>
 <p>A framebuffer is a term that really refers to a block of video memory. This video memory is used to display pixels on the screen. So we have access to each pixel on the screen and can change it's colour properties. The framebuffer should be at least as big as the screen resolution. The size of the framebuffer memory block is given by:</p>
-<div class="codehilite"><pre><span></span><code>    <span class="n">framebuffer_bytes</span> <span class="o">=</span> <span class="n">pixels_x</span> <span class="o">*</span> <span class="n">pixels_y</span> <span class="o">*</span> <span class="n">bytes_per_pixel</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code>    <span class="n">framebuffer_bytes</span> <span class="o">=</span> <span class="n">pixels_x</span> <span class="o">*</span> <span class="n">pixels_y</span> <span class="o">*</span> <span class="n">bytes_per_pixel</span><span class="p">;</span>
 </code></pre></div>
 
 <blockquote>
@@ -3386,7 +3373,7 @@
 <h3 id="aux-peripheral">AUX peripheral<a class="headerlink" href="#aux-peripheral" title="Permanent link">&para;</a></h3>
 <p>The AUX peripheral includes a couple of communication interfaces which we can put to use. In this tutorial we will enable the mini UART which has Rx/Tx signals available on the IO header of the raspberry-pi. We will connect that to an FTDI 3.3V USB-&gt;UART converter and then we can connect PuTTY to the COM port and see output from the code!</p>
 <p>We will do some more work on the c stubs to provide uart support in the write system call which is what the likes of <code>printf()</code>, etc. functions use to write to the system.</p>
-<div class="codehilite"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;rpi-aux.h&quot;</span><span class="cp"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;rpi-aux.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;rpi-base.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;rpi-gpio.h&quot;</span><span class="cp"></span>
 
@@ -3466,7 +3453,7 @@
 <span class="p">}</span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="cp">#ifndef RPI_AUX_H</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#ifndef RPI_AUX_H</span>
 <span class="cp">#define RPI_AUX_H</span>
 
 <span class="cp">#include</span> <span class="cpf">&quot;rpi-base.h&quot;</span><span class="cp"></span>
@@ -3571,7 +3558,7 @@
 <p>The functions are written in a blocking mode, so the write function blocks until the UART can accept the next character, then it writes the new character and returns. Normally we'd use the UART interrupt to send a whole buffer of data rather than manually polling the register as this ties the processor up waiting. However, these are easy to use!</p>
 <h3 id="the-_write-system-call">The _write() System Call<a class="headerlink" href="#the-_write-system-call" title="Permanent link">&para;</a></h3>
 <p>Whenever data needs to be written to the OS it's done so through a function called <code>_write</code>. This is one of the original c-stubs we wrote in a previous tutorial. We previously just implemented a blank function. Here's the blank function we had. As you can see, it's not quite blank, but <code>outbyte</code> does nothing with the data, it's an empty sink.</p>
-<div class="codehilite"><pre><span></span><code><span class="kt">void</span> <span class="nf">outbyte</span><span class="p">(</span> <span class="kt">char</span> <span class="n">b</span> <span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">outbyte</span><span class="p">(</span> <span class="kt">char</span> <span class="n">b</span> <span class="p">)</span>
 <span class="p">{</span>
     <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">b</span><span class="p">;</span>
 <span class="p">}</span>
@@ -3588,7 +3575,7 @@
 </code></pre></div>
 
 <p>We can tie all writes to the OS (for all files) to the UART console by adding the UART write function call to outbyte:</p>
-<div class="codehilite"><pre><span></span><code><span class="kt">void</span> <span class="nf">outbyte</span><span class="p">(</span> <span class="kt">char</span> <span class="n">b</span> <span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">outbyte</span><span class="p">(</span> <span class="kt">char</span> <span class="n">b</span> <span class="p">)</span>
 <span class="p">{</span>
     <span class="n">RPI_AuxMiniUartWrite</span><span class="p">(</span> <span class="n">b</span> <span class="p">);</span>
 <span class="p">}</span>
@@ -3603,7 +3590,7 @@
 <p>Without the VFP co-processor being enabled, VFP instructions will cause an undefined instruction exception. Enabling the VFP is another task that the C Runtime startup file crt0 would have performed for us, but we're on our own since we have to use <code>-nostartfiles</code> (See an earlier tutorial).</p>
 <p>Some <a href="http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dai0098a/index.html">recommended information about enabling VFP support</a> is available from ARM.</p>
 <p>Some <a href="http://processors.wiki.ti.com/index.php/Cortex-A8#How_to_enable_NEON">example code for enabling the VFP</a> is available on the TI wiki, and that's the code we slice in to armc-start.S so that the VFP is enabled before the c library is setup:</p>
-<div class="codehilite"><pre><span></span><code>    // Enable VFP ------------------------------------------------------------
+<div class="highlight"><pre><span></span><code>    // Enable VFP ------------------------------------------------------------
 
     // r1 = Access Control Register
     MRC p15, #0, r1, c1, c0, #2
@@ -3630,7 +3617,7 @@
 <li><a href="https://github.com/raspberrypi/firmware/wiki/Accessing-mailboxes">https://github.com/raspberrypi/firmware/wiki/Accessing-mailboxes</a></li>
 <li><a href="https://github.com/raspberrypi/firmware/wiki/Mailboxes">https://github.com/raspberrypi/firmware/wiki/Mailboxes</a></li>
 </ul>
-<div class="codehilite"><pre><span></span><code><span class="cp">#ifndef RPI_MAILBOX_H</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#ifndef RPI_MAILBOX_H</span>
 <span class="cp">#define RPI_MAILBOX_H</span>
 
 <span class="cp">#include</span> <span class="cpf">&quot;rpi-base.h&quot;</span><span class="cp"></span>
@@ -3679,7 +3666,7 @@
 <span class="cp">#endif</span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp"></span>
 
 <span class="cp">#include</span> <span class="cpf">&quot;rpi-gpio.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;rpi-mailbox.h&quot;</span><span class="cp"></span>
@@ -3740,7 +3727,7 @@
 <h3 id="mailbox-property-interface">Mailbox Property Interface<a class="headerlink" href="#mailbox-property-interface" title="Permanent link">&para;</a></h3>
 <p>The <a href="https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface">Mailbox Property Interface</a> specifies the messaging structure that needs to be present in the 16-byte aligned memory region I mentioned earlier. There are a lot of properties, and you need to read that page a couple of times to get a hold of how the data needs to be laid out.</p>
 <p>Here's the code we're using to support the Mailbox Property Interface:</p>
-<div class="codehilite"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;stdarg.h&gt;</span><span class="cp"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;stdarg.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
 
@@ -3954,7 +3941,7 @@
 <span class="p">}</span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="cp">#ifndef RPI_MAILBOX_INTERFACE_H</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#ifndef RPI_MAILBOX_INTERFACE_H</span>
 <span class="cp">#define RPI_MAILBOX_INTERFACE_H</span>
 
 <span class="cm">/**</span>
@@ -4087,14 +4074,14 @@
 <p><strong>NOTE:</strong> As you can see, I've left some debugging <code>printf()</code> calls in so you can alter <code>PRINT_PROP_DEBUG</code> to print them out - this means it'll print out the buffer you message the GPU with and see the resulting buffer when the GPU has finished it's response</p>
 </blockquote>
 <p>We start off with a memory buffer which is large enough to hold a concatenated list of property tags and data for the property tags we want to use. We use a gcc extension to align it to a 16-byte boundary:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">static</span> <span class="kt">int</span> <span class="n">pt</span><span class="p">[</span><span class="mi">8192</span><span class="p">]</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">aligned</span><span class="p">(</span><span class="mi">16</span><span class="p">)));</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kt">int</span> <span class="n">pt</span><span class="p">[</span><span class="mi">8192</span><span class="p">]</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">aligned</span><span class="p">(</span><span class="mi">16</span><span class="p">)));</span>
 </code></pre></div>
 
 <p>The rest of the functions form a C API to the Mailbox Property Interface. There are various APIs people come up with to generate the memory structure.</p>
 <p>The messages are constructed such that the data length is large enough for whichever is larger, the message request data size or the response data size. It's also good to note that so long as the data size is large enough the GPU will be happy. i.e. you can use a larger data size for the tag and the GPU won't complain. As you can see from the <code>void RPI_PropertyAddTag( rpi_mailbox_tag_t tag, ... )</code> switch <code>tag</code> statement there are only a few types of tag layout anyway.</p>
 <p>The GPU acts upon tag values which have the request/response code set to process request settings (always 0). When the GPU has parsed a value and filled the tag's value buffer with the value required it sets the request/response indicator to 1 to show that the data in the value buffer is the GPU's response. All of this modifies the data in-place.</p>
 <p>The API I wrote for this tutorial allows us to have a simple paradime for using the property interface.</p>
-<div class="codehilite"><pre><span></span><code>    <span class="cm">/* Initialise, Add and Process tags */</span>
+<div class="highlight"><pre><span></span><code>    <span class="cm">/* Initialise, Add and Process tags */</span>
     <span class="n">RPI_PropertyInit</span><span class="p">();</span>
     <span class="n">RPI_PropertyAddTag</span><span class="p">(</span> <span class="n">TAG_</span><span class="o">*</span><span class="p">,</span> <span class="p">...</span> <span class="p">);</span>
     <span class="n">RPI_PropertyAddTag</span><span class="p">(</span> <span class="n">TAG_</span><span class="o">*</span><span class="p">,</span> <span class="p">...</span> <span class="p">);</span>
@@ -4110,7 +4097,7 @@
 <p>If a monitor is plugged in to the Raspberry-Pi the GPU detects it and displays a colour gradiant square on the screen. This shows that the RPI is up and running and has detected the screen.</p>
 <p>Through the mailbox property interface we can negotiate with the GPU so that it creates a framebuffer in memory that is of the correct size to represent the screen attached (or the size of the virtual screen we've requested). It will return a pointer to that memory so that the ARM has memory it can write to that will be directly written to the screen by the GPU. It's the most basic and simplest form of graphics. Each pixel's colour can be controlled by writing data into the buffer.</p>
 <p>Let's look at how we use the property interface to negotiate a 32-bit framebuffer at 1280x1024:</p>
-<div class="codehilite"><pre><span></span><code>    <span class="cm">/* Initialise a framebuffer... */</span>
+<div class="highlight"><pre><span></span><code>    <span class="cm">/* Initialise a framebuffer... */</span>
     <span class="n">RPI_PropertyInit</span><span class="p">();</span>
     <span class="n">RPI_PropertyAddTag</span><span class="p">(</span> <span class="n">TAG_ALLOCATE_BUFFER</span> <span class="p">);</span>
     <span class="n">RPI_PropertyAddTag</span><span class="p">(</span> <span class="n">TAG_SET_PHYSICAL_SIZE</span><span class="p">,</span> <span class="mi">1280</span><span class="p">,</span> <span class="mi">1024</span> <span class="p">);</span>
@@ -4129,7 +4116,7 @@
 <p>For now, we just initialise the framebuffer (using the code above) and then write to the framebuffer space within the limits of the physical size. We draw a colour gradient box like the GPU does on power-on, but we "animate" it by continuously altering the colour vectors and re-drawing the screen. We use 100% of the CPU processing time to draw and you'll see just how slow this is!</p>
 <p>Go ahead and run the example. You can spend some time changing the colour depth setting and screen size to see the performance of the framebuffer fill. You'll notice it's a lot slower than you'd realise to refresh the screen when every pixel is written to.</p>
 <p>This is the code that does the actual draw to the framebuffer:</p>
-<div class="codehilite"><pre><span></span><code>    <span class="n">pixel_offset</span> <span class="o">=</span> <span class="p">(</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span> <span class="n">bpp</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span> <span class="p">)</span> <span class="p">)</span> <span class="o">+</span> <span class="p">(</span> <span class="n">y</span> <span class="o">*</span> <span class="n">pitch</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code>    <span class="n">pixel_offset</span> <span class="o">=</span> <span class="p">(</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span> <span class="n">bpp</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span> <span class="p">)</span> <span class="p">)</span> <span class="o">+</span> <span class="p">(</span> <span class="n">y</span> <span class="o">*</span> <span class="n">pitch</span> <span class="p">);</span>
 
     <span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span> <span class="n">current_colour</span><span class="p">.</span><span class="n">r</span> <span class="o">*</span> <span class="mh">0xFF</span> <span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">;</span>
     <span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span> <span class="n">current_colour</span><span class="p">.</span><span class="n">g</span> <span class="o">*</span> <span class="mh">0xFF</span> <span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">;</span>
@@ -4191,7 +4178,7 @@
 <h3 id="armc-015">armc-015<a class="headerlink" href="#armc-015" title="Permanent link">&para;</a></h3>
 <p>In the RPI processor (both RPI1 and RPI2) there is a cache system which is disabled by default and is designed to speed the processor up by enabling code to be (hopefully) run from the cache. In this example we add enabling the cache to the <code>armc-start.S</code> startup file:</p>
 <h4 id="enabling-cache">Enabling Cache<a class="headerlink" href="#enabling-cache" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code>    .equ    SCTLR_ENABLE_DATA_CACHE         0x4
+<div class="highlight"><pre><span></span><code>    .equ    SCTLR_ENABLE_DATA_CACHE         0x4
     .equ    SCTLR_ENABLE_BRANCH_PREDICTION  0x800
     .equ    SCTLR_ENABLE_INSTRUCTION_CACHE  0x1000
 
@@ -4213,7 +4200,7 @@
 <p>Let's go through the code we've added so we know <strong>why</strong> we've added it and also why it works.</p>
 <p><strong>Section B6.1.86</strong> SCTLR, System Control Register, PMSA describes the system control register</p>
 <p>This register has some bits defined which are useful for us, namely:</p>
-<div class="codehilite"><pre><span></span><code>    I, bit[12] Instruction cache enable bit.
+<div class="highlight"><pre><span></span><code>    I, bit[12] Instruction cache enable bit.
 
         This is a global enable bit for instruction caches. The possible values
         of this bit are:
@@ -4269,7 +4256,7 @@
 <p>In the <a href="https://silver.arm.com/download/ARM_Architecture/AR550-DA-70002-r0p0-00rel0/DDI%2001001.pdf">ARMv6 Architecture Manual</a> for the Pi1 we see:</p>
 <p><strong>Section B3.4</strong> Register 1:Control registers which also descibes the system control register</p>
 <p>This control register implements bits in the register we're interested in for enabling L1 cache:</p>
-<div class="codehilite"><pre><span></span><code>    I (bit[12])
+<div class="highlight"><pre><span></span><code>    I (bit[12])
 
         If separate L1 caches are used, this is the enable/disable bit for the L1
         instruction cache:
@@ -4322,27 +4309,27 @@
 
 <p>As can be seen, although the cache system has changed slightly - it is essentially the same for us to use across both RPi1 and RPi2:</p>
 <p>Get the value of the System Control Register in R0</p>
-<div class="codehilite"><pre><span></span><code>    // Enable L1 Cache -------------------------------------------------------
+<div class="highlight"><pre><span></span><code>    // Enable L1 Cache -------------------------------------------------------
 
     // R0 = System Control Register
     mrc p15,0,r0,c1,c0,0
 </code></pre></div>
 
 <p>Enable the three cache bits we just identified in the architecture manuals above:</p>
-<div class="codehilite"><pre><span></span><code>    // Enable caches and branch prediction
+<div class="highlight"><pre><span></span><code>    // Enable caches and branch prediction
     orr r0,#SCTLR_ENABLE_BRANCH_PREDICTION
     orr r0,#SCTLR_ENABLE_DATA_CACHE
     orr r0,#SCTLR_ENABLE_INSTRUCTION_CACHE
 </code></pre></div>
 
 <p>Write the modified value back to the System Control Register:</p>
-<div class="codehilite"><pre><span></span><code>    // System Control Register = R0
+<div class="highlight"><pre><span></span><code>    // System Control Register = R0
     mcr p15,0,r0,c1,c0,0
 </code></pre></div>
 
 <h4 id="maxmising-the-clock-speed-rpi2">Maxmising the Clock Speed (RPI2)<a class="headerlink" href="#maxmising-the-clock-speed-rpi2" title="Permanent link">&para;</a></h4>
 <p>I also added in some more mailbox properties to make the RPI2 run faster. When the RPI2 starts executing code from the ARM the ARM is running at 600MHz which is a way below its 900MHz maximum. Using the mailbox properties interface we can both ask the GPU for the ARMs maximum frequency and then set the ARM frequency to the maximum returned by the GPU:</p>
-<div class="codehilite"><pre><span></span><code>    <span class="n">mp</span> <span class="o">=</span> <span class="n">RPI_PropertyGet</span><span class="p">(</span> <span class="n">TAG_GET_MAX_CLOCK_RATE</span> <span class="p">);</span>
+<div class="highlight"><pre><span></span><code>    <span class="n">mp</span> <span class="o">=</span> <span class="n">RPI_PropertyGet</span><span class="p">(</span> <span class="n">TAG_GET_MAX_CLOCK_RATE</span> <span class="p">);</span>
 
     <span class="n">RPI_PropertyInit</span><span class="p">();</span>
     <span class="n">RPI_PropertyAddTag</span><span class="p">(</span> <span class="n">TAG_SET_CLOCK_RATE</span><span class="p">,</span> <span class="n">TAG_CLOCK_ARM</span><span class="p">,</span> <span class="n">mp</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">buffer_32</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">);</span>
@@ -4397,8 +4384,6 @@
                 
                   
                 
-                
-
               
               
                 
@@ -4414,34 +4399,34 @@
 <footer class="md-footer">
   
     <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../step04-bare-metal-programming-in-cpt4/" title="Part 4 - Interrupts" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+          <a href="../step04-bare-metal-programming-in-cpt4/" title="Part 4 - Interrupts" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
                 Part 4 - Interrupts
-              </span>
+              </div>
             </div>
           </a>
         
         
-          <a href="../../saltstack/building-a-centos8-salt-master/" title="Building a CentOS8 Salt Master" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+          <a href="../../saltstack/building-a-centos8-salt-master/" title="Building a CentOS8 Salt Master" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
                 Building a CentOS8 Salt Master
-              </span>
+              </div>
             </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
             </div>
           </a>
         
@@ -4456,11 +4441,10 @@
             Copyright &copy; 2002-2020 Brian Sidebotham
           </div>
         
-        powered by
-        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
-        and
+        Made with
         <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs</a>
+          Material for MkDocs
+        </a>
       </div>
       
     </div>
@@ -4469,9 +4453,18 @@
       
     </div>
     
-      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
+      <script src="../../../assets/javascripts/vendor.83fe6e3c.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.7e1cb91c.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.37585f48.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
       
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
       
